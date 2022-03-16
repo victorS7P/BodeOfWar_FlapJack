@@ -49,26 +49,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Hall.cs">
+    <Compile Include="Forms\Hall.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Hall.Designer.cs">
+    <Compile Include="Forms\Hall.Designer.cs">
       <DependentUpon>Hall.cs</DependentUpon>
     </Compile>
-    <Compile Include="Match.cs" />
-    <Compile Include="Server.cs" />
-    <Compile Include="Main.cs">
+    <Compile Include="Models\Match.cs" />
+    <Compile Include="Models\Server.cs" />
+    <Compile Include="Forms\Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main.Designer.cs">
+    <Compile Include="Forms\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Hall.resx">
+    <EmbeddedResource Include="Forms\Hall.resx">
       <DependentUpon>Hall.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main.resx">
+    <EmbeddedResource Include="Forms\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
