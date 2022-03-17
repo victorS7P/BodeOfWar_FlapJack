@@ -55,6 +55,7 @@
     <Compile Include="Forms\Hall.Designer.cs">
       <DependentUpon>Hall.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\MatchType.cs" />
     <Compile Include="Models\Match.cs" />
     <Compile Include="Models\Server.cs" />
     <Compile Include="Forms\Main.cs">

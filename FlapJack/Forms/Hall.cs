@@ -17,11 +17,13 @@ namespace FlapJack
             InitializeComponent();
         }
 
-        private void updateMatches(string status)
+        private void updateMatches(MatchType type)
         {
+            dgvMatches.DataSource = new List<Match>{};
+            
             try
             {
-                List<Match> matches = Server.getMatches(status);
+                List<Match> matches = Server.GetMatches(type.type);
                 dgvMatches.DataSource = matches;
             }
             catch (Exception ex)
@@ -30,9 +32,25 @@ namespace FlapJack
             }
         }
 
+        private void ResetCmbTypes()
+        {
+            cmbTypes.DataSource = Server.GetMatchTypes();
+            this.updateMatches(MatchType.FromType('T'));
+        }
+
         private void Hall_Load(object sender, EventArgs e)
         {
-            this.updateMatches("T");
+            ResetCmbTypes();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            updateMatches((MatchType)cmbTypes.SelectedItem);
+        }
+
+        private void cmbTypes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            updateMatches((MatchType)cmbTypes.SelectedItem);
         }
     }
 }
