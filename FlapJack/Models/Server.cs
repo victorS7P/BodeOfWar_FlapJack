@@ -37,5 +37,20 @@ namespace FlapJack
                 MatchType.FromType('E')
             };
         }
+
+        public static Match CreateMatch(string name, string password)
+        {
+            Match match = new Match();
+            match.id = Jogo.CriarPartida(name, password);
+
+            match.isValid = !match.id.Contains("ERRO");
+            if (!match.isValid) { return match; }
+
+            match.name = name;
+            match.date = DateTime.Now.ToString("dd/MM/yyyy");
+            match.type = MatchType.FromType('A');
+
+            return match;
+        }
     }
 }

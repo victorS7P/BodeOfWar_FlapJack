@@ -25,6 +25,7 @@ namespace FlapJack
             {
                 List<Match> matches = Server.GetMatches(type.type);
                 dgvMatches.DataSource = matches;
+                dgvMatches.Columns["isValid"].Visible = false;
             }
             catch (Exception ex)
             {
@@ -51,6 +52,19 @@ namespace FlapJack
         private void cmbTypes_SelectedIndexChanged(object sender, EventArgs e)
         {
             updateMatches((MatchType)cmbTypes.SelectedItem);
+        }
+
+        private void tmrMatches_Tick(object sender, EventArgs e)
+        {
+            updateMatches((MatchType)cmbTypes.SelectedItem);
+        }
+
+        private void btnCreateMatch_Click(object sender, EventArgs e)
+        {
+            Forms.CreateMatch createMatch = new Forms.CreateMatch();
+
+            createMatch.FormClosed += btnUpdate_Click;
+            createMatch.ShowDialog();
         }
     }
 }

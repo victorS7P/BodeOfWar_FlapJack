@@ -32,7 +32,7 @@
             this.lblMatches = new System.Windows.Forms.Label();
             this.dgvMatches = new System.Windows.Forms.DataGridView();
             this.btnCreateMatch = new System.Windows.Forms.Button();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.tmrMatches = new System.Windows.Forms.Timer(this.components);
             this.btnUpdate = new System.Windows.Forms.Button();
             this.cmbTypes = new System.Windows.Forms.ComboBox();
             this.lblTypes = new System.Windows.Forms.Label();
@@ -71,6 +71,12 @@
             this.btnCreateMatch.TabIndex = 2;
             this.btnCreateMatch.Text = "Criar Partida";
             this.btnCreateMatch.UseVisualStyleBackColor = true;
+            this.btnCreateMatch.Click += new System.EventHandler(this.btnCreateMatch_Click);
+            // 
+            // tmrMatches
+            // 
+            this.tmrMatches.Interval = 1000;
+            this.tmrMatches.Tick += new System.EventHandler(this.tmrMatches_Tick);
             // 
             // btnUpdate
             // 
@@ -133,7 +139,7 @@
         private System.Windows.Forms.Label lblMatches;
         private System.Windows.Forms.DataGridView dgvMatches;
         private System.Windows.Forms.Button btnCreateMatch;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer tmrMatches;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.ComboBox cmbTypes;
         private System.Windows.Forms.Label lblTypes;
