@@ -73,11 +73,11 @@
     <Compile Include="Forms\Hall.Designer.cs">
       <DependentUpon>Hall.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\JoinMatch.cs">
+    <Compile Include="Forms\GameMatch.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\JoinMatch.Designer.cs">
-      <DependentUpon>JoinMatch.cs</DependentUpon>
+    <Compile Include="Forms\GameMatch.Designer.cs">
+      <DependentUpon>GameMatch.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\MatchType.cs" />
     <Compile Include="Models\Match.cs" />
@@ -104,11 +104,11 @@
     <EmbeddedResource Include="Forms\Hall.resx">
       <DependentUpon>Hall.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\JoinMatch.resx">
-      <DependentUpon>JoinMatch.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GameMatch.resx">
+      <DependentUpon>GameMatch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

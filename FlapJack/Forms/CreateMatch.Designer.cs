@@ -1,4 +1,4 @@
-﻿namespace FlapJack.Forms
+﻿namespace FlapJack
 {
     partial class CreateMatch
     {
@@ -113,6 +113,7 @@
             this.Controls.Add(this.btnCreate);
             this.Name = "CreateMatch";
             this.Text = "CreateMatch";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CreateMatch_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

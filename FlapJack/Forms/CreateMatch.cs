@@ -8,10 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FlapJack.Forms
+namespace FlapJack
 {
     public partial class CreateMatch : Form
     {
+        public Match CreatedMatch;
+        public delegate void CloseEvent(Match createdMatch);
+        public CloseEvent WindowClosed;
+
         public CreateMatch()
         {
             InitializeComponent();
@@ -38,7 +42,7 @@ namespace FlapJack.Forms
             {
                 try
                 {
-                    Match match = Server.CreateMatch(eTxtName.Value, eTxtPassword.Value);
+                    CreatedMatch = Server.CreateMatch(eTxtName.Value, eTxtPassword.Value);
                     Close();
                 } catch (Exception ex)
                 {
@@ -62,6 +66,11 @@ namespace FlapJack.Forms
         private void eTxtName_OnType(object sender, EventArgs e)
         {
             lblError.Text = "";
+        }
+
+        private void CreateMatch_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            WindowClosed(CreatedMatch);
         }
     }
 }

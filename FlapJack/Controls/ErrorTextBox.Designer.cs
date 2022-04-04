@@ -67,11 +67,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
             this.Controls.Add(this.lblError);
             this.Controls.Add(this.txtValue);
             this.Controls.Add(this.lblTitle);
             this.Name = "ErrorTextBox";
+            this.Size = new System.Drawing.Size(150, 62);
             this.ResumeLayout(false);
             this.PerformLayout();
 
