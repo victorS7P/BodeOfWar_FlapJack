@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace FlapJack
 {
-    internal class Match
+    public class Match
     {
         public string id { get; set; }
         public string name { get; set; }
         public string date { get; set; }
         public MatchType type { get; set; }
-        public bool isValid { get; set; } = true;
 
         static public Match FromServer(string serverMatch)
         {

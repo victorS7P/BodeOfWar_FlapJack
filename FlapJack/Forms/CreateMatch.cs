@@ -36,14 +36,13 @@ namespace FlapJack.Forms
         {
             if (Validate())
             {
-                Match match = Server.CreateMatch(eTxtName.Value, eTxtPassword.Value);
-
-                if (!match.isValid)
+                try
                 {
-                    lblError.Text = match.id;
-                } else
-                {
+                    Match match = Server.CreateMatch(eTxtName.Value, eTxtPassword.Value);
                     Close();
+                } catch (Exception ex)
+                {
+                    lblError.Text = ex.Message;
                 }
             }
         }
@@ -58,6 +57,11 @@ namespace FlapJack.Forms
         private void ToggleButtonEnable(object sender, EventArgs e)
         {
             btnCreate.Enabled = !HasError();
+        }
+
+        private void eTxtName_OnType(object sender, EventArgs e)
+        {
+            lblError.Text = "";
         }
     }
 }

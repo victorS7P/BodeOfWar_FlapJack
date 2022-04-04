@@ -1,4 +1,4 @@
-﻿namespace FlapJack.Controls
+﻿namespace FlapJack
 {
     partial class ErrorTextBox
     {
@@ -49,7 +49,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtValue.Location = new System.Drawing.Point(0, 16);
             this.txtValue.Name = "txtValue";
-            this.txtValue.Size = new System.Drawing.Size(144, 20);
+            this.txtValue.Size = new System.Drawing.Size(150, 20);
             this.txtValue.TabIndex = 1;
             this.txtValue.TextChanged += new System.EventHandler(this.txtValue_TextChanged);
             // 
@@ -67,11 +67,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.Controls.Add(this.lblError);
             this.Controls.Add(this.txtValue);
             this.Controls.Add(this.lblTitle);
             this.Name = "ErrorTextBox";
-            this.Size = new System.Drawing.Size(144, 57);
             this.ResumeLayout(false);
             this.PerformLayout();
 

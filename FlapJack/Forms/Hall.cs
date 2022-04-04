@@ -12,6 +12,8 @@ namespace FlapJack
 {
     public partial class Hall : Form
     {
+        private Match selectedMatch;
+
         public Hall()
         {
             InitializeComponent();
@@ -25,11 +27,10 @@ namespace FlapJack
             {
                 List<Match> matches = Server.GetMatches(type.type);
                 dgvMatches.DataSource = matches;
-                dgvMatches.Columns["isValid"].Visible = false;
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                eBtnUpdate.Error = ex.Message;
             }
         }
 
@@ -46,7 +47,7 @@ namespace FlapJack
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            updateMatches((MatchType)cmbTypes.SelectedItem);
+            
         }
 
         private void cmbTypes_SelectedIndexChanged(object sender, EventArgs e)
@@ -65,6 +66,66 @@ namespace FlapJack
 
             createMatch.FormClosed += btnUpdate_Click;
             createMatch.ShowDialog();
+        }
+
+        private void ToggleEnterButtonEnable()
+        {
+            eBtnJoin.Enabled = (selectedMatch != null);
+        }
+
+        private void dgvMatches_SelectionChanged(object sender, EventArgs e)
+        {
+            eBtnJoin.Error = "";
+
+            if (dgvMatches.SelectedRows.Count > 0)
+            {
+                Match newSelectedMatch = (Match)dgvMatches.SelectedRows[0].DataBoundItem;
+
+                if (selectedMatch == null || newSelectedMatch.id != selectedMatch.id)
+                {
+                    selectedMatch = newSelectedMatch;
+                    ToggleEnterButtonEnable();
+                }
+            }
+        }
+
+        private void eBtnJoin_OnClick(object sender, EventArgs e)
+        {
+            
+            if (selectedMatch != null)
+            {
+                JoinMatch joinMatch = new JoinMatch();
+
+                joinMatch.SelectedMatch = selectedMatch;
+                joinMatch.ShowDialog();
+            } else
+            {
+                eBtnJoin.Error = "Nenhuma partida selecionada!";
+            }
+
+            
+        }
+
+        private void eBtnUpdate_OnClick(object sender, EventArgs e)
+        {
+            updateMatches((MatchType)cmbTypes.SelectedItem);
+        }
+
+        private void dgvMatches_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                if (selectedMatch.type.type == 'A')
+                {
+                    JoinMatch joinMatch = new JoinMatch();
+
+                    joinMatch.SelectedMatch = selectedMatch;
+                    joinMatch.ShowDialog();
+                } else
+                {
+                    eBtnJoin.Error = "Só é possível entrar em partidas abertas.";
+                }
+            }
         }
     }
 }

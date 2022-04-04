@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FlapJack
 {
-    internal class MatchType
+    public class MatchType
     {
         public char type { get; set; }
         public string name { get; set; }

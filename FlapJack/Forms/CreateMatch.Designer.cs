@@ -30,9 +30,9 @@
         {
             this.btnCreate = new System.Windows.Forms.Button();
             this.lblError = new System.Windows.Forms.Label();
-            this.eTxtPassword = new FlapJack.Controls.ErrorTextBox();
-            this.eTxtConfirm = new FlapJack.Controls.ErrorTextBox();
-            this.eTxtName = new FlapJack.Controls.ErrorTextBox();
+            this.eTxtPassword = new FlapJack.ErrorTextBox();
+            this.eTxtConfirm = new FlapJack.ErrorTextBox();
+            this.eTxtName = new FlapJack.ErrorTextBox();
             this.SuspendLayout();
             // 
             // btnCreate
@@ -57,6 +57,7 @@
             // 
             // eTxtPassword
             // 
+            this.eTxtPassword.AutoSize = true;
             this.eTxtPassword.EnableEmpty = false;
             this.eTxtPassword.Error = "";
             this.eTxtPassword.Label = "Senha";
@@ -71,6 +72,7 @@
             // 
             // eTxtConfirm
             // 
+            this.eTxtConfirm.AutoSize = true;
             this.eTxtConfirm.EnableEmpty = false;
             this.eTxtConfirm.Error = "";
             this.eTxtConfirm.Label = "Confirmar Senha";
@@ -85,6 +87,7 @@
             // 
             // eTxtName
             // 
+            this.eTxtName.AutoSize = true;
             this.eTxtName.EnableEmpty = false;
             this.eTxtName.Error = "";
             this.eTxtName.Label = "Nome";
@@ -96,6 +99,7 @@
             this.eTxtName.TabIndex = 1;
             this.eTxtName.Value = "";
             this.eTxtName.OnValidate += new System.EventHandler(this.ToggleButtonEnable);
+            this.eTxtName.OnType += new System.EventHandler(this.eTxtName_OnType);
             // 
             // CreateMatch
             // 
@@ -116,9 +120,9 @@
 
         #endregion
         private System.Windows.Forms.Button btnCreate;
-        private Controls.ErrorTextBox eTxtName;
-        private Controls.ErrorTextBox eTxtConfirm;
-        private Controls.ErrorTextBox eTxtPassword;
+        private ErrorTextBox eTxtName;
+        private ErrorTextBox eTxtConfirm;
+        private ErrorTextBox eTxtPassword;
         private System.Windows.Forms.Label lblError;
     }
 }

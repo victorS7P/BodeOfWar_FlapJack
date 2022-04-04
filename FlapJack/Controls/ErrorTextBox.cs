@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FlapJack.Controls
+namespace FlapJack
 {
     public partial class ErrorTextBox : UserControl
     {
@@ -49,12 +49,18 @@ namespace FlapJack.Controls
             set;
         } = true;
 
+        public bool HasError
+        {
+            get => Error.Length > 0;
+        }
+
         public ErrorTextBox()
         {
             InitializeComponent();
         }
 
         public event EventHandler OnValidate;
+        public event EventHandler OnType;
 
         public new void Validate()
         {
@@ -74,6 +80,12 @@ namespace FlapJack.Controls
         private void txtValue_TextChanged(object sender, EventArgs e)
         {
             Pure = false;
+
+            if (OnType != null)
+            {
+                OnType(this, new EventArgs());
+            }
+
             Validate();
         }
     }

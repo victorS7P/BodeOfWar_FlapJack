@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\ErrorButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ErrorButton.Designer.cs">
+      <DependentUpon>ErrorButton.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ErrorTextBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -67,6 +73,12 @@
     <Compile Include="Forms\Hall.Designer.cs">
       <DependentUpon>Hall.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\JoinMatch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\JoinMatch.Designer.cs">
+      <DependentUpon>JoinMatch.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\MatchType.cs" />
     <Compile Include="Models\Match.cs" />
     <Compile Include="Models\Server.cs" />
@@ -76,8 +88,13 @@
     <Compile Include="Forms\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Storage\User.cs" />
+    <EmbeddedResource Include="Controls\ErrorButton.resx">
+      <DependentUpon>ErrorButton.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\ErrorTextBox.resx">
       <DependentUpon>ErrorTextBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -86,6 +103,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Hall.resx">
       <DependentUpon>Hall.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\JoinMatch.resx">
+      <DependentUpon>JoinMatch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
