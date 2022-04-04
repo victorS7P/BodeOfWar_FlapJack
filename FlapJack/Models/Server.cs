@@ -71,13 +71,12 @@ namespace FlapJack
             return match;
         }
 
-        public static User JoinMatch(Match match, Player player, string password)
+        public static void JoinMatch(Match match, Player player, string password)
         {
             string serverStr = Jogo.EntrarPartida(int.Parse(match.id), player.name, password);
             string[] data = GetStrData(serverStr);
 
-            User user = User.FromServer(data[0], player);
-            return user;
+            User.SetUser(data[0], player);
         }
 
         public static Player StartMatch(Match match)

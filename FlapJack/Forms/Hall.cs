@@ -167,7 +167,7 @@ namespace FlapJack
                     Player player = new Player();
                     player.name = eTxtPlayer.Value;
 
-                    User user = Server.JoinMatch(SelectedMatch, player, eTxtPassword.Value);
+                    Server.JoinMatch(SelectedMatch, player, eTxtPassword.Value);
                     UpdatePlayersList();
                 }
                 catch (Exception ex)

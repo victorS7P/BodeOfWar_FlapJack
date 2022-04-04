@@ -24,6 +24,13 @@ namespace FlapJack
 
         public override string ToString()
         {
+            User user = User.GetInstance();
+
+            if (user.id == id)
+            {
+                return this.name + " (Você)";
+            }
+
             return this.name;
         }
     }
