@@ -73,11 +73,11 @@
     <Compile Include="Forms\Hall.Designer.cs">
       <DependentUpon>Hall.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\GameMatch.cs">
+    <Compile Include="Forms\GameRoom.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\GameMatch.Designer.cs">
-      <DependentUpon>GameMatch.cs</DependentUpon>
+    <Compile Include="Forms\GameRoom.Designer.cs">
+      <DependentUpon>GameRoom.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\MatchType.cs" />
     <Compile Include="Models\Match.cs" />
@@ -89,8 +89,15 @@
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Player.cs" />
+    <Compile Include="Controls\PlayersList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\PlayersList.Designer.cs">
+      <DependentUpon>PlayersList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Storage\CurrentMatch.cs" />
     <Compile Include="Storage\User.cs" />
     <EmbeddedResource Include="Controls\ErrorButton.resx">
       <DependentUpon>ErrorButton.cs</DependentUpon>
@@ -107,8 +114,11 @@
     <EmbeddedResource Include="Forms\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\GameMatch.resx">
-      <DependentUpon>GameMatch.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\GameRoom.resx">
+      <DependentUpon>GameRoom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\PlayersList.resx">
+      <DependentUpon>PlayersList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

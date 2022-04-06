@@ -34,11 +34,11 @@
             this.tmrMatches = new System.Windows.Forms.Timer(this.components);
             this.cmbTypes = new System.Windows.Forms.ComboBox();
             this.lblTypes = new System.Windows.Forms.Label();
-            this.eBtnJoin = new FlapJack.ErrorButton();
             this.gbxMatch = new System.Windows.Forms.GroupBox();
+            this.pltHall = new FlapJack.PlayersList();
             this.eTxtPassword = new FlapJack.ErrorTextBox();
             this.eTxtPlayer = new FlapJack.ErrorTextBox();
-            this.lbxPlayers = new System.Windows.Forms.ListBox();
+            this.eBtnJoin = new FlapJack.ErrorButton();
             this.tmrPlayersList = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMatches)).BeginInit();
             this.gbxMatch.SuspendLayout();
@@ -102,21 +102,11 @@
             this.lblTypes.TabIndex = 5;
             this.lblTypes.Text = "Exibir Partidas:";
             // 
-            // eBtnJoin
-            // 
-            this.eBtnJoin.Error = "";
-            this.eBtnJoin.Label = "Entrar";
-            this.eBtnJoin.Location = new System.Drawing.Point(6, 361);
-            this.eBtnJoin.Name = "eBtnJoin";
-            this.eBtnJoin.Size = new System.Drawing.Size(237, 50);
-            this.eBtnJoin.TabIndex = 6;
-            this.eBtnJoin.OnClick += new System.EventHandler(this.eBtnJoin_OnClick);
-            // 
             // gbxMatch
             // 
+            this.gbxMatch.Controls.Add(this.pltHall);
             this.gbxMatch.Controls.Add(this.eTxtPassword);
             this.gbxMatch.Controls.Add(this.eTxtPlayer);
-            this.gbxMatch.Controls.Add(this.lbxPlayers);
             this.gbxMatch.Controls.Add(this.eBtnJoin);
             this.gbxMatch.Location = new System.Drawing.Point(567, 79);
             this.gbxMatch.Name = "gbxMatch";
@@ -124,6 +114,14 @@
             this.gbxMatch.TabIndex = 8;
             this.gbxMatch.TabStop = false;
             this.gbxMatch.Visible = false;
+            // 
+            // pltHall
+            // 
+            this.pltHall.Location = new System.Drawing.Point(6, 19);
+            this.pltHall.Name = "pltHall";
+            this.pltHall.Players = null;
+            this.pltHall.Size = new System.Drawing.Size(237, 217);
+            this.pltHall.TabIndex = 10;
             // 
             // eTxtPassword
             // 
@@ -155,20 +153,21 @@
             this.eTxtPlayer.TabIndex = 8;
             this.eTxtPlayer.Value = "";
             // 
-            // lbxPlayers
+            // eBtnJoin
             // 
-            this.lbxPlayers.FormattingEnabled = true;
-            this.lbxPlayers.Location = new System.Drawing.Point(6, 19);
-            this.lbxPlayers.Name = "lbxPlayers";
-            this.lbxPlayers.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.lbxPlayers.Size = new System.Drawing.Size(237, 199);
-            this.lbxPlayers.TabIndex = 7;
+            this.eBtnJoin.Error = "";
+            this.eBtnJoin.Label = "Entrar";
+            this.eBtnJoin.Location = new System.Drawing.Point(6, 361);
+            this.eBtnJoin.Name = "eBtnJoin";
+            this.eBtnJoin.Size = new System.Drawing.Size(237, 50);
+            this.eBtnJoin.TabIndex = 6;
+            this.eBtnJoin.OnClick += new System.EventHandler(this.eBtnJoin_OnClick);
             // 
             // tmrPlayersList
             // 
             this.tmrPlayersList.Tick += new System.EventHandler(this.tmrPlayersList_Tick);
             // 
-            // Partidas
+            // Hall
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -178,7 +177,7 @@
             this.Controls.Add(this.cmbTypes);
             this.Controls.Add(this.btnCreateMatch);
             this.Controls.Add(this.dgvMatches);
-            this.Name = "Partidas";
+            this.Name = "Hall";
             this.ShowInTaskbar = false;
             this.Text = "Hall";
             this.Load += new System.EventHandler(this.Hall_Load);
@@ -197,9 +196,9 @@
         private System.Windows.Forms.Label lblTypes;
         private ErrorButton eBtnJoin;
         private System.Windows.Forms.GroupBox gbxMatch;
-        private System.Windows.Forms.ListBox lbxPlayers;
         private ErrorTextBox eTxtPassword;
         private ErrorTextBox eTxtPlayer;
         private System.Windows.Forms.Timer tmrPlayersList;
+        private PlayersList pltHall;
     }
 }

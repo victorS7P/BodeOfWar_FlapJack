@@ -79,7 +79,7 @@ namespace FlapJack
             User.SetUser(data[0], player);
         }
 
-        public static Player StartMatch(Match match)
+        public static void StartMatch(Match match)
         {
             string serverStr = Jogo.IniciarPartida(int.Parse(User.GetInstance().id), User.GetInstance().password);
             string firstPlayerId = GetStrData(serverStr)[0];
@@ -87,7 +87,7 @@ namespace FlapJack
             Player player = new Player();
             player.id = firstPlayerId;
 
-            return player;
+            CurrentMatch.SetCurrentMatch(match, player);
         }
     }
 }

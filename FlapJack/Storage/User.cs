@@ -20,12 +20,12 @@ namespace FlapJack
 
         public static void SetUser(string serverUser, Player player)
         {
-            User user = GetInstance();
-
             string[] data = serverUser.Split(',');
-            user.id = data[0];
-            user.password = data[1];
-            user.name = player.name;
+
+            User u = GetInstance();
+            u.id = data[0];
+            u.password = data[1];
+            u.name = player.name;
         }
     }
 }

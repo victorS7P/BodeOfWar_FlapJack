@@ -12,9 +12,19 @@ namespace FlapJack
 {
     public partial class Hall : Form
     {
+        private bool isJoin = true;
+
         private Match SelectedMatch
         {
-            get => (Match)dgvMatches.SelectedRows[0].DataBoundItem;
+            get {
+                if (dgvMatches.SelectedRows.Count > 0)
+                {
+                    return (Match)dgvMatches.SelectedRows[0].DataBoundItem;
+                } else
+                {
+                    return null;
+                }
+            }
             set => SelectMatch(value);
         }
 
@@ -110,7 +120,9 @@ namespace FlapJack
             if (dgvMatches.SelectedRows.Count > 0)
             {
                 SelectedMatch = (Match)dgvMatches.SelectedRows[0].DataBoundItem;
-                //SelectMatch(newSelectedMatch);
+            } else
+            {
+                SelectedMatch = null;
             }
         }
 
@@ -133,19 +145,35 @@ namespace FlapJack
             eTxtPassword.Error = "";
             eTxtPlayer.Error = "";
 
-            gbxMatch.Visible = true;
-            gbxMatch.Text = SelectedMatch.name;
+            if (newSelectedMatch == null)
+            {
+                gbxMatch.Visible = false;
+            } else
+            {
+                if (newSelectedMatch.type.type == 'A')
+                {
+                    gbxMatch.Visible = true;
+                    gbxMatch.Text = SelectedMatch.name;
+                } else
+                {
+                    gbxMatch.Visible = false;
+                }
+            }
 
             UpdatePlayersList();
             ToggleEnterButtonEnable();
+            ResetJoinButton();
         }
 
         private void UpdatePlayersList()
         {
             try
             {
-                List<Player> players = Server.GetPlayers(SelectedMatch.id);
-                lbxPlayers.DataSource = players;
+                if (SelectedMatch != null)
+                {
+                    SelectedMatch.players = Server.GetPlayers(SelectedMatch.id);
+                    pltHall.Players = SelectedMatch.players;
+                }
             }
             catch (Exception ex)
             {
@@ -158,21 +186,55 @@ namespace FlapJack
             UpdatePlayersList();
         }
 
+        private void ToggleJoinButtonToStart()
+        {
+            isJoin = false;
+
+            eTxtPlayer.Visible = false;
+            eTxtPassword.Visible = false;
+            eBtnJoin.Label = "Começar Partida";
+        }
+
+        private void ResetJoinButton()
+        {
+            isJoin = true;
+
+            eTxtPlayer.Visible = true;
+            eTxtPassword.Visible = true;
+            eBtnJoin.Label = "Entrar";
+        }
+
         private void eBtnJoin_OnClick(object sender, EventArgs e)
         {
-            if (JoinMatchValidate())
+            if (isJoin)
             {
-                try
+                if (JoinMatchValidate())
                 {
-                    Player player = new Player();
-                    player.name = eTxtPlayer.Value;
+                    try
+                    {
+                        Player player = new Player();
+                        player.name = eTxtPlayer.Value;
 
-                    Server.JoinMatch(SelectedMatch, player, eTxtPassword.Value);
-                    UpdatePlayersList();
+                        Server.JoinMatch(SelectedMatch, player, eTxtPassword.Value);
+                        UpdatePlayersList();
+                        ToggleJoinButtonToStart();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        eBtnJoin.Error = ex.Message;
+                    }
                 }
-                catch (Exception ex)
+            } else
+            {
+                if (pltHall.Players.Count == 1)
                 {
-                    eBtnJoin.Error = ex.Message;
+                    eBtnJoin.Error = "Você não pode começar uma partida sozinho";
+                } else
+                {
+                    Server.StartMatch(SelectedMatch);
+                    GameRoom gameMatch = new GameRoom();
+                    gameMatch.ShowDialog(this);
                 }
             }
         }

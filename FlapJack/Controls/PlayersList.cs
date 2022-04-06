@@ -10,9 +10,17 @@ using System.Windows.Forms;
 
 namespace FlapJack
 {
-    public partial class GameMatch : Form
+    public partial class PlayersList : UserControl
     {
-        public GameMatch()
+        public List<Player> Players
+        {
+            get => (List<Player>)lbxPlayers.DataSource;
+            set => lbxPlayers.DataSource = value;
+        }
+
+        public Player CurrentPlayer;
+
+        public PlayersList()
         {
             InitializeComponent();
         }
