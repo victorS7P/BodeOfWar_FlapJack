@@ -11,7 +11,7 @@ namespace FlapJack
         private CurrentMatch() { }
         private static CurrentMatch _instance;
 
-        private Player currentPlayer;
+        public Player currentPlayer = new Player();
 
         public static CurrentMatch GetInstance()
         {
@@ -26,6 +26,7 @@ namespace FlapJack
             m.type = match.type;
             m.name = match.name;
             m.players = match.players;
+            m.currentPlayer = currentPlayer;
         }
 
         public static Player GetCurrentPlayer()
@@ -40,7 +41,7 @@ namespace FlapJack
                 }
             }
 
-            return null;
+            return new Player();
         }
     }
 }

@@ -25,13 +25,20 @@ namespace FlapJack
         public override string ToString()
         {
             User user = User.GetInstance();
+            string currentPlayerId = CurrentMatch.GetCurrentPlayer().id;
 
+            string result = name;
             if (user.id == id)
             {
-                return this.name + " (Você)";
+                result += " (Você)";
             }
 
-            return this.name;
+            if (currentPlayerId == id)
+            {
+                result += " (jogando)";
+            }
+
+            return result;
         }
     }
 }

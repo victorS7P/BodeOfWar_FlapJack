@@ -12,7 +12,7 @@ namespace FlapJack
         public string name { get; set; }
         public string date { get; set; }
         public MatchType type { get; set; }
-        public List<Player> players { get; set; }
+        public List<Player> players { get; set; } = new List<Player>();
 
         static public Match FromServer(string serverMatch)
         {
