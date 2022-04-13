@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Hall));
             this.dgvMatches = new System.Windows.Forms.DataGridView();
             this.btnCreateMatch = new System.Windows.Forms.Button();
             this.tmrMatches = new System.Windows.Forms.Timer(this.components);
@@ -171,12 +172,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackgroundImage = global::FlapJack.Properties.Resources.bg_menus;
             this.ClientSize = new System.Drawing.Size(825, 508);
             this.Controls.Add(this.gbxMatch);
             this.Controls.Add(this.lblTypes);
             this.Controls.Add(this.cmbTypes);
             this.Controls.Add(this.btnCreateMatch);
             this.Controls.Add(this.dgvMatches);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Hall";
             this.ShowInTaskbar = false;
             this.Text = "Hall";

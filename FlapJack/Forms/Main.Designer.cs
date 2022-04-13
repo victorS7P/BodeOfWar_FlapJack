@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.btnPlay = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.lblVersion = new System.Windows.Forms.Label();
@@ -85,13 +86,14 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImage = global::FlapJack.Properties.Resources.BoW_Bg;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.lblVersion);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnPlay);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Main";
