@@ -12,9 +12,9 @@ namespace FlapJack
         public static Dictionary<char, string> MATCHES_NAMES = new Dictionary<char, string>
         {
             { 'T', "Todas" },
-            { 'A', "Abertas" },
+            { 'A', "Aberta" },
             { 'J', "Jogando" },
-            { 'F', "Finalizadas" }
+            { 'E', "Encerrada" }
         };
 
         public static string[] GetStrData (string data)
@@ -52,7 +52,7 @@ namespace FlapJack
                 MatchType.FromType('T'),
                 MatchType.FromType('A'),
                 MatchType.FromType('J'),
-                MatchType.FromType('F')
+                MatchType.FromType('E')
             };
         }
 

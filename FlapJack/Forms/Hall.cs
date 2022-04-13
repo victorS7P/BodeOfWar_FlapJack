@@ -227,15 +227,19 @@ namespace FlapJack
                 }
             } else
             {
-                if (pltHall.Players.Count == 1)
-                {
-                    eBtnJoin.Error = "Você não pode começar uma partida sozinho";
-                } else
-                {
-                    Server.StartMatch(SelectedMatch);
-                    GameRoom gameMatch = new GameRoom();
-                    gameMatch.ShowDialog(this);
-                }
+                Server.StartMatch(SelectedMatch);
+                GameRoom gameMatch = new GameRoom();
+                gameMatch.ShowDialog(this);
+
+                //if (pltHall.Players.Count == 1)
+                //{
+                //    eBtnJoin.Error = "Você não pode começar uma partida sozinho";
+                //} else
+                //{
+                //    Server.StartMatch(SelectedMatch);
+                //    GameRoom gameMatch = new GameRoom();
+                //    gameMatch.ShowDialog(this);
+                //}
             }
         }
     }
