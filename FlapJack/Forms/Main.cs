@@ -19,7 +19,7 @@ namespace FlapJack
 
         private void toggleAllVisibility(bool show)
         {
-            lblTitle.Visible = show;
+            
             btnPlay.Visible = show;
             btnExit.Visible = show;
         }
