@@ -36,11 +36,11 @@
             this.cmbTypes = new System.Windows.Forms.ComboBox();
             this.lblTypes = new System.Windows.Forms.Label();
             this.gbxMatch = new System.Windows.Forms.GroupBox();
+            this.tmrPlayersList = new System.Windows.Forms.Timer(this.components);
             this.pltHall = new FlapJack.PlayersList();
             this.eTxtPassword = new FlapJack.ErrorTextBox();
             this.eTxtPlayer = new FlapJack.ErrorTextBox();
             this.eBtnJoin = new FlapJack.ErrorButton();
-            this.tmrPlayersList = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMatches)).BeginInit();
             this.gbxMatch.SuspendLayout();
             this.SuspendLayout();
@@ -65,6 +65,8 @@
             // 
             // btnCreateMatch
             // 
+            this.btnCreateMatch.BackColor = System.Drawing.Color.DarkRed;
+            this.btnCreateMatch.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnCreateMatch.Location = new System.Drawing.Point(567, 53);
             this.btnCreateMatch.Name = "btnCreateMatch";
             this.btnCreateMatch.Size = new System.Drawing.Size(249, 20);
@@ -105,10 +107,12 @@
             // 
             // gbxMatch
             // 
+            this.gbxMatch.BackColor = System.Drawing.Color.DarkRed;
             this.gbxMatch.Controls.Add(this.pltHall);
             this.gbxMatch.Controls.Add(this.eTxtPassword);
             this.gbxMatch.Controls.Add(this.eTxtPlayer);
             this.gbxMatch.Controls.Add(this.eBtnJoin);
+            this.gbxMatch.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.gbxMatch.Location = new System.Drawing.Point(567, 79);
             this.gbxMatch.Name = "gbxMatch";
             this.gbxMatch.Size = new System.Drawing.Size(249, 417);
@@ -116,8 +120,13 @@
             this.gbxMatch.TabStop = false;
             this.gbxMatch.Visible = false;
             // 
+            // tmrPlayersList
+            // 
+            this.tmrPlayersList.Tick += new System.EventHandler(this.tmrPlayersList_Tick);
+            // 
             // pltHall
             // 
+            this.pltHall.BackColor = System.Drawing.Color.DarkRed;
             this.pltHall.Location = new System.Drawing.Point(6, 19);
             this.pltHall.Name = "pltHall";
             this.pltHall.Players = null;
@@ -163,10 +172,6 @@
             this.eBtnJoin.Size = new System.Drawing.Size(237, 50);
             this.eBtnJoin.TabIndex = 6;
             this.eBtnJoin.OnClick += new System.EventHandler(this.eBtnJoin_OnClick);
-            // 
-            // tmrPlayersList
-            // 
-            this.tmrPlayersList.Tick += new System.EventHandler(this.tmrPlayersList_Tick);
             // 
             // Hall
             // 
