@@ -36,13 +36,16 @@
             // 
             // btnPlay
             // 
-            this.btnPlay.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+
+            this.btnPlay.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPlay.AutoSize = true;
-            this.btnPlay.BackColor = System.Drawing.Color.Red;
+            this.btnPlay.BackColor = System.Drawing.Color.DarkRed;
             this.btnPlay.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnPlay.Font = new System.Drawing.Font("Humnst777 BlkCn BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPlay.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnPlay.Location = new System.Drawing.Point(354, 202);
+            
             this.btnPlay.Name = "btnPlay";
             this.btnPlay.Size = new System.Drawing.Size(112, 31);
             this.btnPlay.TabIndex = 1;
@@ -55,9 +58,11 @@
             this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExit.AutoSize = true;
-            this.btnExit.BackColor = System.Drawing.Color.Red;
-            this.btnExit.ForeColor = System.Drawing.Color.White;
-            this.btnExit.Location = new System.Drawing.Point(354, 239);
+            this.btnExit.BackColor = System.Drawing.Color.DarkRed;
+            this.btnExit.Font = new System.Drawing.Font("Humnst777 BlkCn BT", 12F);
+            this.btnExit.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnExit.Location = new System.Drawing.Point(590, 331);
+            
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(112, 36);
             this.btnExit.TabIndex = 2;
@@ -72,7 +77,8 @@
             this.lblVersion.BackColor = System.Drawing.Color.Transparent;
             this.lblVersion.Font = new System.Drawing.Font("Consolas", 11.25F);
             this.lblVersion.ForeColor = System.Drawing.Color.Red;
-            this.lblVersion.Location = new System.Drawing.Point(676, 405);
+            this.lblVersion.Location = new System.Drawing.Point(1127, 561);
+            
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(112, 36);
             this.lblVersion.TabIndex = 0;
@@ -81,19 +87,21 @@
             // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImage = global::FlapJack.Properties.Resources.BoW_Bg;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1333, 623);
             this.Controls.Add(this.lblVersion);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnPlay);
             this.DoubleBuffered = true;
+            this.Font = new System.Drawing.Font("Kristen ITC", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Main";
