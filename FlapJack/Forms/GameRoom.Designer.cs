@@ -48,9 +48,9 @@
             this.gbxCards.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbxCards.Location = new System.Drawing.Point(15, 413);
+            this.gbxCards.Location = new System.Drawing.Point(15, 291);
             this.gbxCards.Name = "gbxCards";
-            this.gbxCards.Size = new System.Drawing.Size(773, 218);
+            this.gbxCards.Size = new System.Drawing.Size(898, 340);
             this.gbxCards.TabIndex = 11;
             this.gbxCards.TabStop = false;
             this.gbxCards.Text = "Cartas na mão";
@@ -61,9 +61,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlCards.AutoScroll = true;
-            this.pnlCards.Location = new System.Drawing.Point(21, 432);
+            this.pnlCards.Location = new System.Drawing.Point(21, 310);
             this.pnlCards.Name = "pnlCards";
-            this.pnlCards.Size = new System.Drawing.Size(761, 193);
+            this.pnlCards.Size = new System.Drawing.Size(886, 315);
             this.pnlCards.TabIndex = 0;
             // 
             // plsRoom
@@ -78,7 +78,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 643);
+            this.ClientSize = new System.Drawing.Size(925, 643);
             this.Controls.Add(this.pnlCards);
             this.Controls.Add(this.gbxCards);
             this.Controls.Add(this.plsRoom);

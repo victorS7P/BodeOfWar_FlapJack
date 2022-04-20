@@ -111,7 +111,7 @@ namespace FlapJack
             return cards;
         }
 
-        public static string[] GetPlayerCards(User user)
+        public static string[] GetPlayerGoatCards(User user)
         {
             return GetStrData(Jogo.VerificarMao(int.Parse(user.id), user.password));
         }
@@ -123,10 +123,15 @@ namespace FlapJack
             return RoundModel.FromServer(matchRound);
         }
 
-        public static void PlayACard(string idCarta)
+        public static void PlayAGoatCard(string idCarta)
         {
             User user = User.GetInstance();
             Jogo.Jogar(int.Parse(user.id), user.password, int.Parse(idCarta));
+        }
+
+        public static string[] GetPlayerIslandCards(User user)
+        {
+            return GetStrData(Jogo.VerificarIlha(int.Parse(user.id), user.password))[0].Split(',');
         }
     }
 }

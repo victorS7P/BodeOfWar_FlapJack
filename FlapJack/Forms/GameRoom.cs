@@ -12,7 +12,8 @@ namespace FlapJack
 {
     public partial class GameRoom : Form
     {
-        public string[] Cards = {};
+        public string[] UserCards = {};
+        public string[] IslandCards = {};
 
         public GameRoom()
         {
@@ -27,9 +28,9 @@ namespace FlapJack
             UpdateMatchRound();
         }
 
-        private Card CreateDefaultCard (string cardId, int index)
+        private GoatCardControl CreateDefaultGoatCard (string cardId, int index)
         {
-            Card card = new Card();
+            GoatCardControl card = new GoatCardControl();
             card.Height = (pnlCards.Height - 50);
             card.CardId = cardId;
             card.Location = new Point(index * card.Width, 0);
@@ -37,29 +38,62 @@ namespace FlapJack
             return card;
         }
 
-        private void UpdateCardsPanel(bool shouldSelect)
+        private IslandCardControl CreateDeafultIslandCard (string cardValue, int index)
+        {
+            IslandCardControl card = new IslandCardControl();
+            card.Height = (pnlCards.Height / 2);
+            card.Width = card.Height;
+            card.Value = cardValue;
+            card.Location = new Point((index * card.Width) + 100, (pnlCards.Height / 4));
+
+            return card;
+        }
+
+        private void UpdateCardsPanel(bool goatsCards, bool shouldSelect)
         {
             pnlCards.Controls.Clear();
-            foreach (var item in Cards.Select((cardId, i) => new { cardId, i }))
+
+            if (goatsCards)
             {
-                Card card = CreateDefaultCard(item.cardId, item.i);
+                UserCards = User.GetInstance().GetGoatCards();
 
-                if (shouldSelect)
+                foreach (var item in UserCards.Select((cardId, i) => new { cardId, i }))
                 {
-                    card.Cursor = Cursors.Hand;
-                    card.MouseClick += SelectGoatCard;
-                }
+                    GoatCardControl card = CreateDefaultGoatCard(item.cardId, item.i);
 
-                pnlCards.Controls.Add(card);
+                    if (shouldSelect)
+                    {
+                        card.Cursor = Cursors.Hand;
+                        card.MouseClick += SelectGoatCard;
+                    }
+
+                    pnlCards.Controls.Add(card);
+                }
+            } else
+            {
+                IslandCards = User.GetInstance().GetIslandCards();
+
+                foreach (var item in IslandCards.Select((cardValue, i) => new { cardValue, i }))
+                {
+                    IslandCardControl card = CreateDeafultIslandCard(item.cardValue, item.i);
+
+                    if (shouldSelect)
+                    {
+                        card.Cursor = Cursors.Hand;
+                        card.MouseClick += SelectIslandCard;
+                    }
+
+                    pnlCards.Controls.Add(card);
+                }
             }
+
+            plsRoom.Refresh();
         }
 
         private void UpdateMatchRound()
         {
             RoundModel round = Server.GetMatchRound();
             CurrentMatch.SetCurrentRound(round);
-
-            Cards = User.GetInstance().GetCards();
 
             if (round.roundStatus == 'B' && round.player.id == User.GetInstance().id)
             {
@@ -81,34 +115,39 @@ namespace FlapJack
 
         private void SelectGoatCard(object sender, EventArgs e)
         {
-            Card card = (Card)sender;
-            Server.PlayACard(card.CardId);
+            GoatCardControl card = (GoatCardControl)sender;
+            Server.PlayAGoatCard(card.CardId);
             System.Threading.Thread.Sleep(100);
             UpdateMatchRound();
         }
 
+        private void SelectIslandCard(object sender, EventArgs e)
+        {
+
+        }
+
         private void UserShouldSelectGoatCard()
         {
-            gbxCards.Text = "Jogue uma carta";
-            UpdateCardsPanel(true);
+            gbxCards.Text = "Sua mão | Jogue uma carta";
+            UpdateCardsPanel(true, true);
         }
 
         private void UserShouldSelectIslandCard()
         {
-            gbxCards.Text = "Cartas na mão";
-            UpdateCardsPanel(false);
+            gbxCards.Text = "Sua mão | Você ganhou a rodada, escolha um ilha";
+            UpdateCardsPanel(false, false);
         }
 
         private void UserShouldAwaitForGoatCard()
         {
-            gbxCards.Text = "Cartas na mão";
-            UpdateCardsPanel(false);
+            gbxCards.Text = "Sua mão | Esperando adversários jogarem seus bodes...";
+            UpdateCardsPanel(true, false);
         }
 
         private void UserShouldAwaitForIslandCard()
         {
-            gbxCards.Text = "Cartas na mão";
-            UpdateCardsPanel(false);
+            gbxCards.Text = "Sua mão | Esperando adversário definir ilha...";
+            UpdateCardsPanel(false, false);
         }
 
         private void CompleteMatch()

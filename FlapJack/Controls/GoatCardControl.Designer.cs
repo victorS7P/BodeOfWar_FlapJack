@@ -1,6 +1,6 @@
 ﻿namespace FlapJack
 {
-    partial class Card
+    partial class GoatCardControl
     {
         /// <summary> 
         /// Variável de designer necessária.
@@ -51,6 +51,7 @@
             // lblGoats
             // 
             this.lblGoats.AutoSize = true;
+            this.lblGoats.BackColor = System.Drawing.Color.Black;
             this.lblGoats.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGoats.ForeColor = System.Drawing.Color.White;
             this.lblGoats.Location = new System.Drawing.Point(22, 289);
@@ -62,6 +63,7 @@
             // lblId
             // 
             this.lblId.AutoSize = true;
+            this.lblId.BackColor = System.Drawing.Color.Black;
             this.lblId.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblId.ForeColor = System.Drawing.Color.White;
             this.lblId.Location = new System.Drawing.Point(22, 19);
@@ -70,13 +72,13 @@
             this.lblId.TabIndex = 0;
             this.lblId.Text = "0";
             // 
-            // Card
+            // GoatCardControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.pnlCard);
-            this.Name = "Card";
+            this.Name = "GoatCardControl";
             this.Size = new System.Drawing.Size(241, 343);
             this.Load += new System.EventHandler(this.Card_Load);
             this.pnlCard.ResumeLayout(false);

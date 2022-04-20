@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace FlapJack
 {
-    public partial class Card : UserControl
+    public partial class GoatCardControl : UserControl
     {
         public String CardId { get; set; } = "1";
 
-        public Card()
+        public GoatCardControl()
         {
             InitializeComponent();
         }

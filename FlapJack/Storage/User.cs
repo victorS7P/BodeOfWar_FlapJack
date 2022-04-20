@@ -28,9 +28,14 @@ namespace FlapJack
             u.name = player.name;
         }
 
-        public string[] GetCards()
+        public string[] GetGoatCards()
         {
-            return Server.GetPlayerCards(GetInstance());
+            return Server.GetPlayerGoatCards(GetInstance());
+        }
+
+        public string[] GetIslandCards()
+        {
+            return Server.GetPlayerIslandCards(GetInstance());
         }
     }
 }

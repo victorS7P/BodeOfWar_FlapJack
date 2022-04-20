@@ -49,11 +49,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\Card.cs">
+    <Compile Include="Controls\GoatCardControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\Card.Designer.cs">
-      <DependentUpon>Card.cs</DependentUpon>
+    <Compile Include="Controls\GoatCardControl.Designer.cs">
+      <DependentUpon>GoatCardControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\ErrorButton.cs">
       <SubType>UserControl</SubType>
@@ -66,6 +66,12 @@
     </Compile>
     <Compile Include="Controls\ErrorTextBox.Designer.cs">
       <DependentUpon>ErrorTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\IslandCardControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\IslandCardControl.Designer.cs">
+      <DependentUpon>IslandCardControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\CreateMatch.cs">
       <SubType>Form</SubType>
@@ -107,14 +113,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Storage\CurrentMatch.cs" />
     <Compile Include="Storage\User.cs" />
-    <EmbeddedResource Include="Controls\Card.resx">
-      <DependentUpon>Card.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\GoatCardControl.resx">
+      <DependentUpon>GoatCardControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ErrorButton.resx">
       <DependentUpon>ErrorButton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ErrorTextBox.resx">
       <DependentUpon>ErrorTextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\IslandCardControl.resx">
+      <DependentUpon>IslandCardControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CreateMatch.resx">
       <DependentUpon>CreateMatch.cs</DependentUpon>
