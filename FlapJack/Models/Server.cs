@@ -133,5 +133,11 @@ namespace FlapJack
         {
             return GetStrData(Jogo.VerificarIlha(int.Parse(user.id), user.password))[0].Split(',');
         }
+
+        public static void PlayAIslandCard(string islandValue)
+        {
+            User user = User.GetInstance();
+            Jogo.DefinirIlha(int.Parse(user.id), user.password, int.Parse(islandValue));
+        }
     }
 }

@@ -42,6 +42,7 @@
             this.lblValue.TabIndex = 0;
             this.lblValue.Text = "0";
             this.lblValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblValue.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lblValue_MouseClick);
             this.lblValue.MouseEnter += new System.EventHandler(this.lblValue_MouseEnter);
             this.lblValue.MouseLeave += new System.EventHandler(this.lblValue_MouseLeave);
             // 

@@ -42,5 +42,10 @@ namespace FlapJack
         {
             this.BackColor = Color.FromArgb(255, Color.White);
         }
+
+        private void lblValue_MouseClick(object sender, MouseEventArgs e)
+        {
+            this.OnMouseClick(e);
+        }
     }
 }

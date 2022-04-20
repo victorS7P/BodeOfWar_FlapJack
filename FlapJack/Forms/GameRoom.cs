@@ -123,7 +123,10 @@ namespace FlapJack
 
         private void SelectIslandCard(object sender, EventArgs e)
         {
-
+            IslandCardControl card = (IslandCardControl)sender;
+            Server.PlayAIslandCard(card.Value);
+            System.Threading.Thread.Sleep(100);
+            UpdateMatchRound();
         }
 
         private void UserShouldSelectGoatCard()
@@ -134,8 +137,8 @@ namespace FlapJack
 
         private void UserShouldSelectIslandCard()
         {
-            gbxCards.Text = "Sua mão | Você ganhou a rodada, escolha um ilha";
-            UpdateCardsPanel(false, false);
+            gbxCards.Text = "Sua mão | Você ganhou a rodada, escolha uma ilha";
+            UpdateCardsPanel(false, true);
         }
 
         private void UserShouldAwaitForGoatCard()
