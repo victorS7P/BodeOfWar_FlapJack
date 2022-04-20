@@ -8,6 +8,8 @@ namespace FlapJack
 {
     public sealed class CurrentMatch : Match
     {
+        private RoundModel currentRound = null;
+
         private CurrentMatch() { }
         private static CurrentMatch _instance;
 
@@ -42,6 +44,23 @@ namespace FlapJack
             }
 
             return new Player();
+        }
+
+        public static Player GetPlayer(string playerId)
+        {
+            return GetInstance().players.First(p => p.id == playerId);
+        }
+
+        public static void SetCurrentRound (RoundModel round)
+        {
+            CurrentMatch m = GetInstance();
+            m.currentRound = round;
+            m.currentPlayer = round.player;
+        }
+
+        public static RoundModel GetCurrentRound()
+        {
+            return GetInstance().currentRound;
         }
     }
 }

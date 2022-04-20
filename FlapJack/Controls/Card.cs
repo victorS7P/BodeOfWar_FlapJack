@@ -38,5 +38,10 @@ namespace FlapJack
         {
             UpdateCard();
         }
+
+        private void pnlCard_MouseClick(object sender, MouseEventArgs e)
+        {
+            this.OnMouseClick(e);
+        }
     }
 }

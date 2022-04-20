@@ -48,9 +48,9 @@
             this.gbxCards.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbxCards.Location = new System.Drawing.Point(15, 437);
+            this.gbxCards.Location = new System.Drawing.Point(15, 413);
             this.gbxCards.Name = "gbxCards";
-            this.gbxCards.Size = new System.Drawing.Size(773, 194);
+            this.gbxCards.Size = new System.Drawing.Size(773, 218);
             this.gbxCards.TabIndex = 11;
             this.gbxCards.TabStop = false;
             this.gbxCards.Text = "Cartas na mão";
@@ -61,9 +61,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlCards.AutoScroll = true;
-            this.pnlCards.Location = new System.Drawing.Point(21, 456);
+            this.pnlCards.Location = new System.Drawing.Point(21, 432);
             this.pnlCards.Name = "pnlCards";
-            this.pnlCards.Size = new System.Drawing.Size(761, 169);
+            this.pnlCards.Size = new System.Drawing.Size(761, 193);
             this.pnlCards.TabIndex = 0;
             // 
             // plsRoom

@@ -115,5 +115,18 @@ namespace FlapJack
         {
             return GetStrData(Jogo.VerificarMao(int.Parse(user.id), user.password));
         }
+
+        public static RoundModel GetMatchRound()
+        {
+            string matchId = CurrentMatch.GetInstance().id;
+            string matchRound = GetStrData(Jogo.VerificarVez(int.Parse(matchId)))[0];
+            return RoundModel.FromServer(matchRound);
+        }
+
+        public static void PlayACard(string idCarta)
+        {
+            User user = User.GetInstance();
+            Jogo.Jogar(int.Parse(user.id), user.password, int.Parse(idCarta));
+        }
     }
 }

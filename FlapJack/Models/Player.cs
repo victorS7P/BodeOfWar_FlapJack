@@ -33,9 +33,17 @@ namespace FlapJack
                 result += " (Você)";
             }
 
-            if (currentPlayerId == id)
+            if (currentPlayerId == id && CurrentMatch.GetCurrentRound() != null)
             {
-                result += " (jogando)";
+                char currentRoundStatus = CurrentMatch.GetCurrentRound().roundStatus;
+
+                if (currentRoundStatus == 'B')
+                {
+                    result += " (jogando > bode)";
+                } else if (currentRoundStatus == 'I')
+                {
+                    result += " (jogando > ilha)";
+                }
             }
 
             return result;
