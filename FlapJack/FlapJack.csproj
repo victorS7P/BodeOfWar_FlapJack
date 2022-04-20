@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\Card.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Card.Designer.cs">
+      <DependentUpon>Card.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ErrorButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -79,6 +85,7 @@
     <Compile Include="Forms\GameRoom.Designer.cs">
       <DependentUpon>GameRoom.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\CardModel.cs" />
     <Compile Include="Models\MatchType.cs" />
     <Compile Include="Models\Match.cs" />
     <Compile Include="Models\Server.cs" />
@@ -99,6 +106,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Storage\CurrentMatch.cs" />
     <Compile Include="Storage\User.cs" />
+    <EmbeddedResource Include="Controls\Card.resx">
+      <DependentUpon>Card.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\ErrorButton.resx">
       <DependentUpon>ErrorButton.cs</DependentUpon>
     </EmbeddedResource>
@@ -113,6 +123,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\GameRoom.resx">
       <DependentUpon>GameRoom.cs</DependentUpon>
@@ -151,6 +162,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\bg_menus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\b10.PNG" />
+    <None Include="Resources\b9.PNG" />
+    <None Include="Resources\b8.PNG" />
+    <None Include="Resources\b7.PNG" />
+    <None Include="Resources\b6.PNG" />
+    <None Include="Resources\b5.png" />
+    <None Include="Resources\b4.PNG" />
+    <None Include="Resources\b3.PNG" />
+    <None Include="Resources\b2.PNG" />
+    <None Include="Resources\b1.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

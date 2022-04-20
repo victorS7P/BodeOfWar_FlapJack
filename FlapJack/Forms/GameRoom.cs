@@ -12,6 +12,8 @@ namespace FlapJack
 {
     public partial class GameRoom : Form
     {
+        public string[] Cards = {};
+
         public GameRoom()
         {
             InitializeComponent();
@@ -21,6 +23,24 @@ namespace FlapJack
         {
             Owner.Hide();
             plsRoom.Players = CurrentMatch.GetInstance().players;
+            UpdateUserCards();
+        }
+
+        private void UpdateUserCards()
+        {
+            Cards = User.GetInstance().GetCards();
+
+            pnlCards.Controls.Clear();
+            foreach (var item in Cards.Select((cardId, i) => new { cardId, i }))
+            {
+                Card cardCpp = new Card();
+
+                cardCpp.Height = (pnlCards.Height - 30);
+                cardCpp.CardId = item.cardId;
+                cardCpp.Location = new Point(item.i * cardCpp.Width, 15);
+
+                pnlCards.Controls.Add(cardCpp);
+            }
         }
     }
 }

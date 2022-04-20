@@ -9,6 +9,8 @@ namespace FlapJack
 {
     public class Server
     {
+        public static List<CardModel> GameGoatCards = new List<CardModel>();
+
         public static Dictionary<char, string> MATCHES_NAMES = new Dictionary<char, string>
         {
             { 'T', "Todas" },
@@ -24,7 +26,12 @@ namespace FlapJack
                 throw new Exception(data.Replace("ERRO:", ""));
             }
 
-            return data.Replace("\n\n", "\n").Split('\n');
+            return data
+                .Replace("\n\n", "\n")
+                .Split('\n')
+                .Select(id => id.Replace("\r", ""))
+                .Where(c => c.Count() > 0)
+                .ToArray();
         }
 
         public static string version { get; set; } = Jogo.Versao;
@@ -88,6 +95,25 @@ namespace FlapJack
             player.id = firstPlayerId;
 
             CurrentMatch.SetCurrentMatch(match, player);
+        }
+
+        public static List<CardModel> GetCards()
+        {
+            if (GameGoatCards.Count > 0)
+            {
+                return GameGoatCards;
+            }
+
+            string[] serverCards = GetStrData(Jogo.ListarCartas());
+            List<CardModel> cards = serverCards
+                .Select(c => CardModel.FromServer(c)).ToList();
+
+            return cards;
+        }
+
+        public static string[] GetPlayerCards(User user)
+        {
+            return GetStrData(Jogo.VerificarMao(int.Parse(user.id), user.password));
         }
     }
 }

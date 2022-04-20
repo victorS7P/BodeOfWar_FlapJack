@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.lblPlayers = new System.Windows.Forms.Label();
-            this.tmrPlayersList = new System.Windows.Forms.Timer(this.components);
+            this.gbxCards = new System.Windows.Forms.GroupBox();
+            this.pnlCards = new System.Windows.Forms.Panel();
             this.plsRoom = new FlapJack.PlayersList();
             this.SuspendLayout();
             // 
@@ -43,22 +43,47 @@
             this.lblPlayers.TabIndex = 6;
             this.lblPlayers.Text = "Jogadores na Sala";
             // 
+            // gbxCards
+            // 
+            this.gbxCards.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbxCards.Location = new System.Drawing.Point(15, 437);
+            this.gbxCards.Name = "gbxCards";
+            this.gbxCards.Size = new System.Drawing.Size(773, 194);
+            this.gbxCards.TabIndex = 11;
+            this.gbxCards.TabStop = false;
+            this.gbxCards.Text = "Cartas na mão";
+            // 
+            // pnlCards
+            // 
+            this.pnlCards.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlCards.AutoScroll = true;
+            this.pnlCards.Location = new System.Drawing.Point(21, 456);
+            this.pnlCards.Name = "pnlCards";
+            this.pnlCards.Size = new System.Drawing.Size(761, 169);
+            this.pnlCards.TabIndex = 0;
+            // 
             // plsRoom
             // 
             this.plsRoom.Location = new System.Drawing.Point(12, 25);
             this.plsRoom.Name = "plsRoom";
             this.plsRoom.Players = null;
-            this.plsRoom.Size = new System.Drawing.Size(172, 226);
+            this.plsRoom.Size = new System.Drawing.Size(172, 260);
             this.plsRoom.TabIndex = 7;
             // 
-            // GameMatch
+            // GameRoom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 643);
+            this.Controls.Add(this.pnlCards);
+            this.Controls.Add(this.gbxCards);
             this.Controls.Add(this.plsRoom);
             this.Controls.Add(this.lblPlayers);
-            this.Name = "GameMatch";
+            this.Name = "GameRoom";
             this.Text = "Match";
             this.Load += new System.EventHandler(this.GameMatch_Load);
             this.ResumeLayout(false);
@@ -69,7 +94,8 @@
         #endregion
 
         private System.Windows.Forms.Label lblPlayers;
-        private System.Windows.Forms.Timer tmrPlayersList;
         private PlayersList plsRoom;
+        private System.Windows.Forms.GroupBox gbxCards;
+        private System.Windows.Forms.Panel pnlCards;
     }
 }

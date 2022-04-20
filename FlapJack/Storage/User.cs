@@ -27,5 +27,10 @@ namespace FlapJack
             u.password = data[1];
             u.name = player.name;
         }
+
+        public string[] GetCards()
+        {
+            return Server.GetPlayerCards(GetInstance());
+        }
     }
 }
