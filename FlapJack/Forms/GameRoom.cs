@@ -92,22 +92,28 @@ namespace FlapJack
 
         private void UpdateMatchRound()
         {
-            RoundModel round = Server.GetMatchRound();
-            CurrentMatch.SetCurrentRound(round);
+            try
+            {
+                RoundModel round = Server.GetMatchRound();
+                CurrentMatch.SetCurrentRound(round);
 
-            if (round.roundStatus == 'B' && round.player.id == User.GetInstance().id)
-            {
-                UserShouldSelectGoatCard();
-            } else if (round.roundStatus == 'I' && round.player.id == User.GetInstance().id)
-            {
-                UserShouldSelectIslandCard();
-            } else if (round.roundStatus == 'B')
-            {
-                UserShouldAwaitForGoatCard();
-            } else if (round.roundStatus == 'I')
-            {
-                UserShouldAwaitForIslandCard();
-            } else
+                if (round.roundStatus == 'B' && round.player.id == User.GetInstance().id)
+                {
+                    UserShouldSelectGoatCard();
+                }
+                else if (round.roundStatus == 'I' && round.player.id == User.GetInstance().id)
+                {
+                    UserShouldSelectIslandCard();
+                }
+                else if (round.roundStatus == 'B')
+                {
+                    UserShouldAwaitForGoatCard();
+                }
+                else if (round.roundStatus == 'I')
+                {
+                    UserShouldAwaitForIslandCard();
+                }
+            } catch
             {
                 CompleteMatch();
             }
@@ -155,7 +161,9 @@ namespace FlapJack
 
         private void CompleteMatch()
         {
-
+            string text = Server.GetWinnerText();
+            MessageBox.Show(this, text, "Partida encerrada!");
+            this.Close();
         }
     }
 }

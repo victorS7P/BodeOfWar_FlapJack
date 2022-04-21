@@ -139,5 +139,16 @@ namespace FlapJack
             User user = User.GetInstance();
             Jogo.DefinirIlha(int.Parse(user.id), user.password, int.Parse(islandValue));
         }
+
+        public static string[] GetHistory()
+        {
+            int matchId = int.Parse(CurrentMatch.GetInstance().id);
+            return GetStrData(Jogo.ExibirNarracao(matchId));
+        }
+
+        public static string GetWinnerText()
+        {
+            return GetHistory()[0];
+        }
     }
 }
