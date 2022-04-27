@@ -38,6 +38,7 @@
             // btnCreate
             // 
             this.btnCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCreate.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnCreate.Location = new System.Drawing.Point(221, 286);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(75, 23);
@@ -105,12 +106,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.DarkRed;
             this.ClientSize = new System.Drawing.Size(308, 321);
             this.Controls.Add(this.lblError);
             this.Controls.Add(this.eTxtPassword);
             this.Controls.Add(this.eTxtConfirm);
             this.Controls.Add(this.eTxtName);
             this.Controls.Add(this.btnCreate);
+            this.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Name = "CreateMatch";
             this.Text = "CreateMatch";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CreateMatch_FormClosing);

@@ -43,7 +43,11 @@
             this.btnPlay.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnPlay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPlay.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+<<<<<<< Updated upstream
             this.btnPlay.Location = new System.Drawing.Point(354, 202);
+=======
+            this.btnPlay.Location = new System.Drawing.Point(590, 333);
+>>>>>>> Stashed changes
             this.btnPlay.Name = "btnPlay";
             this.btnPlay.Size = new System.Drawing.Size(112, 31);
             this.btnPlay.TabIndex = 1;
@@ -59,9 +63,13 @@
             this.btnExit.BackColor = System.Drawing.Color.DarkRed;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnExit.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+<<<<<<< Updated upstream
             this.btnExit.Location = new System.Drawing.Point(590, 331);
+=======
+            this.btnExit.Location = new System.Drawing.Point(590, 370);
+>>>>>>> Stashed changes
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(112, 36);
+            this.btnExit.Size = new System.Drawing.Size(112, 31);
             this.btnExit.TabIndex = 2;
             this.btnExit.Text = "Sair";
             this.btnExit.UseVisualStyleBackColor = false;

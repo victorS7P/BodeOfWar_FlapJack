@@ -165,5 +165,10 @@ namespace FlapJack
             MessageBox.Show(this, text, "Partida encerrada!");
             this.Close();
         }
+
+        private void plsRoom_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

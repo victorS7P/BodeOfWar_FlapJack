@@ -36,11 +36,11 @@
             this.cmbTypes = new System.Windows.Forms.ComboBox();
             this.lblTypes = new System.Windows.Forms.Label();
             this.gbxMatch = new System.Windows.Forms.GroupBox();
-            this.tmrPlayersList = new System.Windows.Forms.Timer(this.components);
             this.pltHall = new FlapJack.PlayersList();
             this.eTxtPassword = new FlapJack.ErrorTextBox();
             this.eTxtPlayer = new FlapJack.ErrorTextBox();
             this.eBtnJoin = new FlapJack.ErrorButton();
+            this.tmrPlayersList = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMatches)).BeginInit();
             this.gbxMatch.SuspendLayout();
             this.SuspendLayout();
@@ -120,10 +120,6 @@
             this.gbxMatch.TabStop = false;
             this.gbxMatch.Visible = false;
             // 
-            // tmrPlayersList
-            // 
-            this.tmrPlayersList.Tick += new System.EventHandler(this.tmrPlayersList_Tick);
-            // 
             // pltHall
             // 
             this.pltHall.BackColor = System.Drawing.Color.DarkRed;
@@ -173,11 +169,17 @@
             this.eBtnJoin.TabIndex = 6;
             this.eBtnJoin.OnClick += new System.EventHandler(this.eBtnJoin_OnClick);
             // 
+            // tmrPlayersList
+            // 
+            this.tmrPlayersList.Tick += new System.EventHandler(this.tmrPlayersList_Tick);
+            // 
             // Hall
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackgroundImage = global::FlapJack.Properties.Resources.bg_menus;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(825, 508);
             this.Controls.Add(this.gbxMatch);
             this.Controls.Add(this.lblTypes);
