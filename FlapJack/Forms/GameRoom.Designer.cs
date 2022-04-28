@@ -48,13 +48,9 @@
             this.gbxCards.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-<<<<<<< Updated upstream
-            this.gbxCards.Location = new System.Drawing.Point(15, 291);
-=======
             this.gbxCards.BackColor = System.Drawing.Color.DarkRed;
             this.gbxCards.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.gbxCards.Location = new System.Drawing.Point(15, 437);
->>>>>>> Stashed changes
             this.gbxCards.Name = "gbxCards";
             this.gbxCards.Size = new System.Drawing.Size(898, 340);
             this.gbxCards.TabIndex = 11;
@@ -86,13 +82,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-<<<<<<< Updated upstream
-            this.ClientSize = new System.Drawing.Size(925, 643);
-=======
-            this.BackgroundImage = global::FlapJack.Properties.Resources.bg_menus;
+            this.BackgroundImage = global::FlapJack.Properties.Resources.bg;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(800, 643);
->>>>>>> Stashed changes
             this.Controls.Add(this.pnlCards);
             this.Controls.Add(this.gbxCards);
             this.Controls.Add(this.plsRoom);
