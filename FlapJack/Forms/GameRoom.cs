@@ -15,6 +15,9 @@ namespace FlapJack
         public string[] UserCards = {};
         public string[] IslandCards = {};
 
+        private bool shouldSelectGoat = false;
+        private bool shouldSelectIsland = false;
+
         public GameRoom()
         {
             InitializeComponent();
@@ -51,6 +54,12 @@ namespace FlapJack
 
         private void UpdateCardsPanel(bool goatsCards, bool shouldSelect)
         {
+            if (shouldSelect)
+            {
+                shouldSelectGoat = goatsCards;
+                shouldSelectIsland = !goatsCards;
+            }
+
             pnlCards.Controls.Clear();
 
             if (goatsCards)
@@ -117,7 +126,6 @@ namespace FlapJack
         {
             GoatCardControl card = (GoatCardControl)sender;
             Server.PlayAGoatCard(card.CardId);
-            System.Threading.Thread.Sleep(100);
             UpdateMatchRound();
         }
 
@@ -125,7 +133,6 @@ namespace FlapJack
         {
             IslandCardControl card = (IslandCardControl)sender;
             Server.PlayAIslandCard(card.Value);
-            System.Threading.Thread.Sleep(100);
             UpdateMatchRound();
         }
 
@@ -161,6 +168,23 @@ namespace FlapJack
         private void plsRoom_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void tmrSelect_Tick(object sender, EventArgs e)
+        {
+            tmrSelect.Enabled = false;
+
+            if (shouldSelectGoat || shouldSelectIsland)
+            {
+                var random = new Random().Next(pnlCards.Controls.Count);
+
+                if (shouldSelectGoat)
+                    SelectGoatCard(pnlCards.Controls[random], e);
+                else
+                    SelectIslandCard(pnlCards.Controls[random], e);
+            }
+
+            tmrSelect.Enabled = true;
         }
     }
 }

@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblPlayers = new System.Windows.Forms.Label();
             this.gbxCards = new System.Windows.Forms.GroupBox();
             this.pnlCards = new System.Windows.Forms.Panel();
+            this.tmrSelect = new System.Windows.Forms.Timer(this.components);
             this.plsRoom = new FlapJack.PlayersList();
             this.SuspendLayout();
             // 
@@ -68,6 +70,12 @@
             this.pnlCards.Size = new System.Drawing.Size(886, 315);
             this.pnlCards.TabIndex = 0;
             // 
+            // tmrSelect
+            // 
+            this.tmrSelect.Enabled = true;
+            this.tmrSelect.Interval = 2000;
+            this.tmrSelect.Tick += new System.EventHandler(this.tmrSelect_Tick);
+            // 
             // plsRoom
             // 
             this.plsRoom.BackColor = System.Drawing.Color.DarkRed;
@@ -104,5 +112,6 @@
         private PlayersList plsRoom;
         private System.Windows.Forms.GroupBox gbxCards;
         private System.Windows.Forms.Panel pnlCards;
+        private System.Windows.Forms.Timer tmrSelect;
     }
 }
