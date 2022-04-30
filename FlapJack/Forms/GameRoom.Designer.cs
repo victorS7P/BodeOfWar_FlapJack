@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblPlayers = new System.Windows.Forms.Label();
             this.gbxCards = new System.Windows.Forms.GroupBox();
             this.pnlCards = new System.Windows.Forms.Panel();
+            this.tmrSelect = new System.Windows.Forms.Timer(this.components);
             this.plsRoom = new FlapJack.PlayersList();
             this.SuspendLayout();
             // 
@@ -48,13 +50,9 @@
             this.gbxCards.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-<<<<<<< Updated upstream
-            this.gbxCards.Location = new System.Drawing.Point(15, 291);
-=======
             this.gbxCards.BackColor = System.Drawing.Color.DarkRed;
             this.gbxCards.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.gbxCards.Location = new System.Drawing.Point(15, 437);
->>>>>>> Stashed changes
             this.gbxCards.Name = "gbxCards";
             this.gbxCards.Size = new System.Drawing.Size(898, 340);
             this.gbxCards.TabIndex = 11;
@@ -72,6 +70,12 @@
             this.pnlCards.Size = new System.Drawing.Size(886, 315);
             this.pnlCards.TabIndex = 0;
             // 
+            // tmrSelect
+            // 
+            this.tmrSelect.Enabled = true;
+            this.tmrSelect.Interval = 2000;
+            this.tmrSelect.Tick += new System.EventHandler(this.tmrSelect_Tick);
+            // 
             // plsRoom
             // 
             this.plsRoom.BackColor = System.Drawing.Color.DarkRed;
@@ -86,13 +90,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-<<<<<<< Updated upstream
-            this.ClientSize = new System.Drawing.Size(925, 643);
-=======
-            this.BackgroundImage = global::FlapJack.Properties.Resources.bg_menus;
+            this.BackgroundImage = global::FlapJack.Properties.Resources.bg;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(800, 643);
->>>>>>> Stashed changes
             this.Controls.Add(this.pnlCards);
             this.Controls.Add(this.gbxCards);
             this.Controls.Add(this.plsRoom);
@@ -112,5 +112,6 @@
         private PlayersList plsRoom;
         private System.Windows.Forms.GroupBox gbxCards;
         private System.Windows.Forms.Panel pnlCards;
+        private System.Windows.Forms.Timer tmrSelect;
     }
 }
