@@ -150,5 +150,16 @@ namespace FlapJack
         {
             return GetHistory()[0];
         }
+
+        public static CardModel GetCardById(string cardId)
+        {
+            return GetCards().First(c => c.CardId == cardId);
+        }
+
+        public static TableModel GetTable()
+        {
+            int matchId = int.Parse(CurrentMatch.GetInstance().id);
+            return TableModel.FromServer(GetStrData(Jogo.VerificarMesa(matchId)));
+        }
     }
 }

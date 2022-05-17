@@ -12,6 +12,13 @@ namespace FlapJack
 {
     public partial class GameRoom : Form
     {
+        public CurrentMatch GameMatch;
+        public User GameUser;
+        public Bot GameBot;
+
+        public TableModel CurrentTable = new TableModel();
+        public RoundModel CurrentRound = new RoundModel();
+
         public string[] UserCards = {};
         public string[] IslandCards = {};
 
@@ -26,10 +33,8 @@ namespace FlapJack
         private void GameMatch_Load(object sender, EventArgs e)
         {
             Owner.Hide();
-            plsRoom.Players = CurrentMatch.GetInstance().players;
-
-            UpdateMatchRound();
-        }
+            Initialize();
+    }
 
         private GoatCardControl CreateDefaultGoatCard (string cardId, int index)
         {
@@ -103,22 +108,19 @@ namespace FlapJack
         {
             try
             {
-                RoundModel round = Server.GetMatchRound();
-                CurrentMatch.SetCurrentRound(round);
-
-                if (round.roundStatus == 'B' && round.player.id == User.GetInstance().id)
+                if (CurrentRound.roundStatus == 'B' && CurrentRound.player.id == GameUser.id)
                 {
                     UserShouldSelectGoatCard();
                 }
-                else if (round.roundStatus == 'I' && round.player.id == User.GetInstance().id)
+                else if (CurrentRound.roundStatus == 'I' && CurrentRound.player.id == GameUser.id)
                 {
                     UserShouldSelectIslandCard();
                 }
-                else if (round.roundStatus == 'B')
+                else if (CurrentRound.roundStatus == 'B')
                 {
                     UserShouldAwaitForGoatCard();
                 }
-                else if (round.roundStatus == 'I')
+                else if (CurrentRound.roundStatus == 'I')
                 {
                     UserShouldAwaitForIslandCard();
                 }
@@ -146,12 +148,14 @@ namespace FlapJack
         {
             gbxCards.Text = "Sua mão | Jogue uma carta";
             UpdateCardsPanel(true, true);
+            Server.PlayAGoatCard(GameBot.ChoseGoatCard());
         }
 
         private void UserShouldSelectIslandCard()
         {
             gbxCards.Text = "Sua mão | Você ganhou a rodada, escolha uma ilha";
             UpdateCardsPanel(false, true);
+            Server.PlayAIslandCard(GameBot.ChoseIslandCard(IslandCards));
         }
 
         private void UserShouldAwaitForGoatCard()
@@ -173,25 +177,43 @@ namespace FlapJack
             this.Close();
         }
 
-        private void plsRoom_Load(object sender, EventArgs e)
+        private void Initialize()
         {
+            GameMatch = CurrentMatch.GetInstance();
+            plsRoom.Players = GameMatch.players;
 
+            GameUser = User.GetInstance();
+            UserCards = GameUser.GetGoatCards();
+
+            GameBot = Bot.GetInstance();
+            GameBot.Initialize(UserCards.ToList());
         }
 
+        private void UpdateRound()
+        {
+            TableModel NextTable = Server.GetTable();
+            RoundModel NextRound = Server.GetMatchRound();
+
+            bool HasNewMove = (
+                NextTable.LastPlayer != CurrentTable.LastPlayer ||
+                NextRound.roundNumber != CurrentRound.roundNumber ||
+                NextRound.roundStatus != CurrentRound.roundStatus
+            );
+
+            if (HasNewMove)
+            {
+                CurrentTable = NextTable;
+                CurrentRound = NextRound;
+
+                GameBot.UpdateTable(CurrentTable.IslandValue, CurrentRound.roundNumber, CurrentTable.GetTableCards());
+                UpdateMatchRound();
+            }
+        }
+        
         private void tmrSelect_Tick(object sender, EventArgs e)
         {
             tmrSelect.Enabled = false;
-
-            if (shouldSelectGoat || shouldSelectIsland)
-            {
-                var random = new Random().Next(pnlCards.Controls.Count);
-
-                if (shouldSelectGoat)
-                    SelectGoatCard(pnlCards.Controls[random], e);
-                else
-                    SelectIslandCard(pnlCards.Controls[random], e);
-            }
-
+            UpdateRound();
             tmrSelect.Enabled = true;
         }
     }

@@ -94,6 +94,7 @@
     <Compile Include="Models\CardModel.cs" />
     <Compile Include="Models\MatchType.cs" />
     <Compile Include="Models\Match.cs" />
+    <Compile Include="Models\TableModel .cs" />
     <Compile Include="Models\RoundModel.cs" />
     <Compile Include="Models\Server.cs" />
     <Compile Include="Forms\Main.cs">
@@ -111,6 +112,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Storage\Bot.cs" />
     <Compile Include="Storage\CurrentMatch.cs" />
     <Compile Include="Storage\User.cs" />
     <EmbeddedResource Include="Controls\GoatCardControl.resx">
