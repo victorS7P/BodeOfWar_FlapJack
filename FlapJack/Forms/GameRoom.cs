@@ -22,9 +22,6 @@ namespace FlapJack
         public string[] UserCards = {};
         public string[] IslandCards = {};
 
-        private bool shouldSelectGoat = false;
-        private bool shouldSelectIsland = false;
-
         public GameRoom()
         {
             InitializeComponent();
@@ -59,31 +56,8 @@ namespace FlapJack
 
         private void UpdateCardsPanel(bool goatsCards, bool shouldSelect)
         {
-            if (shouldSelect)
-            {
-                shouldSelectGoat = goatsCards;
-                shouldSelectIsland = !goatsCards;
-            }
-
             pnlCards.Controls.Clear();
-
-            if (goatsCards)
-            {
-                UserCards = User.GetInstance().GetGoatCards();
-
-                foreach (var item in UserCards.Select((cardId, i) => new { cardId, i }))
-                {
-                    GoatCardControl card = CreateDefaultGoatCard(item.cardId, item.i);
-
-                    if (shouldSelect)
-                    {
-                        card.Cursor = Cursors.Hand;
-                        card.MouseClick += SelectGoatCard;
-                    }
-
-                    pnlCards.Controls.Add(card);
-                }
-            } else
+            if (shouldSelect && !goatsCards)
             {
                 IslandCards = User.GetInstance().GetIslandCards();
 
@@ -99,6 +73,22 @@ namespace FlapJack
 
                     pnlCards.Controls.Add(card);
                 }
+            } else
+            {
+                UserCards = User.GetInstance().GetGoatCards();
+
+                foreach (var item in UserCards.Select((cardId, i) => new { cardId, i }))
+                {
+                    GoatCardControl card = CreateDefaultGoatCard(item.cardId, item.i);
+
+                    if (shouldSelect)
+                    {
+                        card.Cursor = Cursors.Hand;
+                        card.MouseClick += SelectGoatCard;
+                    }
+
+                    pnlCards.Controls.Add(card);
+                }
             }
 
             plsRoom.Refresh();
@@ -106,25 +96,22 @@ namespace FlapJack
 
         private void UpdateMatchRound()
         {
-            try
+            if (CurrentRound.roundStatus == 'B' && CurrentRound.player.id == GameUser.id)
             {
-                if (CurrentRound.roundStatus == 'B' && CurrentRound.player.id == GameUser.id)
-                {
-                    UserShouldSelectGoatCard();
-                }
-                else if (CurrentRound.roundStatus == 'I' && CurrentRound.player.id == GameUser.id)
-                {
-                    UserShouldSelectIslandCard();
-                }
-                else if (CurrentRound.roundStatus == 'B')
-                {
-                    UserShouldAwaitForGoatCard();
-                }
-                else if (CurrentRound.roundStatus == 'I')
-                {
-                    UserShouldAwaitForIslandCard();
-                }
-            } catch
+                UserShouldSelectGoatCard();
+            }
+            else if (CurrentRound.roundStatus == 'I' && CurrentRound.player.id == GameUser.id)
+            {
+                UserShouldSelectIslandCard();
+            }
+            else if (CurrentRound.roundStatus == 'B')
+            {
+                UserShouldAwaitForGoatCard();
+            }
+            else if (CurrentRound.roundStatus == 'I')
+            {
+                UserShouldAwaitForIslandCard();
+            } else if (CurrentRound.roundStatus == 'E')
             {
                 CompleteMatch();
             }
@@ -153,7 +140,7 @@ namespace FlapJack
 
         private void UserShouldSelectIslandCard()
         {
-            gbxCards.Text = "Sua mão | Você ganhou a rodada, escolha uma ilha";
+            gbxCards.Text = "Sua mão | Você perdeu a rodada, escolha uma ilha";
             UpdateCardsPanel(false, true);
             Server.PlayAIslandCard(GameBot.ChoseIslandCard(IslandCards));
         }
@@ -179,6 +166,7 @@ namespace FlapJack
 
         private void Initialize()
         {
+            CurrentMatch.GetInstance().players = Server.GetPlayers(CurrentMatch.GetInstance().id);
             GameMatch = CurrentMatch.GetInstance();
             plsRoom.Players = GameMatch.players;
 
@@ -197,7 +185,8 @@ namespace FlapJack
             bool HasNewMove = (
                 NextTable.LastPlayer != CurrentTable.LastPlayer ||
                 NextRound.roundNumber != CurrentRound.roundNumber ||
-                NextRound.roundStatus != CurrentRound.roundStatus
+                NextRound.roundStatus != CurrentRound.roundStatus ||
+                NextRound.roundStatus == 'E'
             );
 
             if (HasNewMove)

@@ -12,7 +12,7 @@ namespace FlapJack
         {
             { 'B', "Bode" },
             { 'I', "Ilha" },
-            { 'F', "Finalizada" }
+            { 'E', "Encerrado" }
         };
 
         public Player player;
