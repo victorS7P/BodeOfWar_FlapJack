@@ -161,5 +161,38 @@ namespace FlapJack
             int matchId = int.Parse(CurrentMatch.GetInstance().id);
             return TableModel.FromServer(GetStrData(Jogo.VerificarMesa(matchId)));
         }
+
+        public static int UserRoundWonGoats(int RoundId)
+        {
+            int matchId = int.Parse(CurrentMatch.GetInstance().id);
+            TableModel RoundTable = TableModel.FromServer(GetStrData(Jogo.VerificarMesa(matchId, RoundId)));
+
+            if (RoundTable.PlayersCards.Count == 0)
+            {
+                return 0;
+            }
+
+            int WonCardValue = RoundTable.PlayersCards.Values.Select(v => int.Parse(v)).Max();
+            int PlayerCardValue = int.Parse(RoundTable.PlayersCards[User.GetInstance().id]);
+            
+            if (WonCardValue != PlayerCardValue)
+            {
+                return 0;
+            }
+
+            return int.Parse(GetCardById(PlayerCardValue.ToString()).Goats);
+        }
+
+        public static int CountUserGoats(int CurrentRoundNumber)
+        {
+            int Total = 0;
+
+            for(int i = 1; i < CurrentRoundNumber; i++)
+            {
+                Total += UserRoundWonGoats(i);
+            }
+
+            return Total;
+        }
     }
 }

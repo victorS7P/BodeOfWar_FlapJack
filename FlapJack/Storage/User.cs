@@ -8,14 +8,19 @@ namespace FlapJack
 {
     public sealed class User : Player
     {
-        private User() { }
         private static User _instance;
-
-        public string password;
-
         public static User GetInstance()
         {
             return _instance ?? (_instance = new User());
+        }
+
+        public string password;
+
+        public void Reset()
+        {
+            id = string.Empty;
+            name = string.Empty;
+            password = string.Empty;
         }
 
         public static void SetUser(string serverUser, Player player)

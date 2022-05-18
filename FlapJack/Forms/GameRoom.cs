@@ -161,6 +161,7 @@ namespace FlapJack
         {
             string text = Server.GetWinnerText();
             MessageBox.Show(this, text, "Partida encerrada!");
+
             this.Close();
         }
 
@@ -177,24 +178,30 @@ namespace FlapJack
             GameBot.Initialize(UserCards.ToList());
         }
 
-        private void UpdateRound()
+        private void Think()
         {
             TableModel NextTable = Server.GetTable();
             RoundModel NextRound = Server.GetMatchRound();
 
-            bool HasNewMove = (
+            bool ChangedTable = (
                 NextTable.LastPlayer != CurrentTable.LastPlayer ||
+                NextTable.PlayersCards.Count != CurrentTable.PlayersCards.Count
+            );
+
+            bool ChangedRound = (
                 NextRound.roundNumber != CurrentRound.roundNumber ||
                 NextRound.roundStatus != CurrentRound.roundStatus ||
+                NextRound.player.id != CurrentRound.player.id ||
                 NextRound.roundStatus == 'E'
             );
 
-            if (HasNewMove)
+            bool NeedToUpdate = ChangedTable || ChangedRound;
+
+            if (NeedToUpdate)
             {
                 CurrentTable = NextTable;
                 CurrentRound = NextRound;
 
-                GameBot.UpdateTable(CurrentTable.IslandValue, CurrentRound.roundNumber, CurrentTable.GetTableCards());
                 UpdateMatchRound();
             }
         }
@@ -202,8 +209,12 @@ namespace FlapJack
         private void tmrSelect_Tick(object sender, EventArgs e)
         {
             tmrSelect.Enabled = false;
-            UpdateRound();
-            tmrSelect.Enabled = true;
+            Think();
+            
+            if (CurrentRound.roundStatus != 'E')
+            {
+                tmrSelect.Enabled = true;
+            }
         }
     }
 }
