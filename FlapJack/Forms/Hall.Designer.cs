@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Hall));
             this.dgvMatches = new System.Windows.Forms.DataGridView();
             this.btnCreateMatch = new System.Windows.Forms.Button();
-            this.tmrMatches = new System.Windows.Forms.Timer(this.components);
             this.cmbTypes = new System.Windows.Forms.ComboBox();
             this.lblTypes = new System.Windows.Forms.Label();
             this.gbxMatch = new System.Windows.Forms.GroupBox();
@@ -74,11 +73,6 @@
             this.btnCreateMatch.Text = "Criar Nova Partida";
             this.btnCreateMatch.UseVisualStyleBackColor = true;
             this.btnCreateMatch.Click += new System.EventHandler(this.btnCreateMatch_Click);
-            // 
-            // tmrMatches
-            // 
-            this.tmrMatches.Interval = 1000;
-            this.tmrMatches.Tick += new System.EventHandler(this.tmrMatches_Tick);
             // 
             // cmbTypes
             // 
@@ -171,6 +165,8 @@
             // 
             // tmrPlayersList
             // 
+            this.tmrPlayersList.Enabled = true;
+            this.tmrPlayersList.Interval = 1000;
             this.tmrPlayersList.Tick += new System.EventHandler(this.tmrPlayersList_Tick);
             // 
             // Hall
@@ -201,7 +197,6 @@
         #endregion
         private System.Windows.Forms.DataGridView dgvMatches;
         private System.Windows.Forms.Button btnCreateMatch;
-        private System.Windows.Forms.Timer tmrMatches;
         private System.Windows.Forms.ComboBox cmbTypes;
         private System.Windows.Forms.Label lblTypes;
         private ErrorButton eBtnJoin;

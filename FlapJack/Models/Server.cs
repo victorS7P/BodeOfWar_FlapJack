@@ -86,6 +86,11 @@ namespace FlapJack
             User.SetUser(data[0], player);
         }
 
+        public static bool MatchHasStarted(Match match)
+        {
+            return Jogo.ExibirNarracao(int.Parse(match.id)).Contains("iniciou a partida");
+        }
+
         public static void StartMatch(Match match)
         {
             string serverStr = Jogo.IniciarPartida(int.Parse(User.GetInstance().id), User.GetInstance().password);

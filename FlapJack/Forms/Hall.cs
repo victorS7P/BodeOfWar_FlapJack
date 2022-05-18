@@ -173,6 +173,12 @@ namespace FlapJack
                 {
                     SelectedMatch.players = Server.GetPlayers(SelectedMatch.id);
                     pltHall.Players = SelectedMatch.players;
+
+                    if (Server.MatchHasStarted(SelectedMatch))
+                    {
+                        CurrentMatch.SetCurrentMatch(SelectedMatch, User.GetInstance());
+                        OpenGameRoom();
+                    }
                 }
             }
             catch (Exception ex)
@@ -183,7 +189,9 @@ namespace FlapJack
 
         private void tmrPlayersList_Tick(object sender, EventArgs e)
         {
+            tmrPlayersList.Enabled = false;
             UpdatePlayersList();
+            tmrPlayersList.Enabled = true;
         }
 
         private void ToggleJoinButtonToStart()
@@ -202,6 +210,13 @@ namespace FlapJack
             eTxtPlayer.Visible = true;
             eTxtPassword.Visible = true;
             eBtnJoin.Label = "Entrar";
+        }
+
+
+        private void OpenGameRoom()
+        {
+            GameRoom gameMatch = new GameRoom();
+            gameMatch.ShowDialog(this);
         }
 
         private void eBtnJoin_OnClick(object sender, EventArgs e)
@@ -228,8 +243,7 @@ namespace FlapJack
             } else
             {
                 Server.StartMatch(SelectedMatch);
-                GameRoom gameMatch = new GameRoom();
-                gameMatch.ShowDialog(this);
+                OpenGameRoom();
 
                 //if (pltHall.Players.Count == 1)
                 //{
