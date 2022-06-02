@@ -174,7 +174,7 @@ namespace FlapJack
                     SelectedMatch.players = Server.GetPlayers(SelectedMatch.id);
                     pltHall.Players = SelectedMatch.players;
 
-                    if (Server.MatchHasStarted(SelectedMatch))
+                    if (Server.MatchHasStarted(SelectedMatch) && User.GetInstance().id != null)
                     {
                         CurrentMatch.SetCurrentMatch(SelectedMatch, User.GetInstance());
                         OpenGameRoom();
