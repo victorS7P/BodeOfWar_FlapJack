@@ -162,6 +162,7 @@
             this.eBtnJoin.Size = new System.Drawing.Size(237, 50);
             this.eBtnJoin.TabIndex = 6;
             this.eBtnJoin.OnClick += new System.EventHandler(this.eBtnJoin_OnClick);
+            this.eBtnJoin.Load += new System.EventHandler(this.eBtnJoin_Load);
             // 
             // tmrPlayersList
             // 

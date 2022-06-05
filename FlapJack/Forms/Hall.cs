@@ -13,6 +13,7 @@ namespace FlapJack
     public partial class Hall : Form
     {
         private bool isJoin = true;
+        private bool gameRoomOpened = false;
 
         private Match SelectedMatch
         {
@@ -174,7 +175,12 @@ namespace FlapJack
                     SelectedMatch.players = Server.GetPlayers(SelectedMatch.id);
                     pltHall.Players = SelectedMatch.players;
 
-                    if (Server.MatchHasStarted(SelectedMatch) && User.GetInstance().id != null)
+                    if (
+                        Server.MatchHasStarted(SelectedMatch) &&
+                        User.GetInstance().id != null &&
+                        !gameRoomOpened
+
+                       )
                     {
                         CurrentMatch.SetCurrentMatch(SelectedMatch, User.GetInstance());
                         OpenGameRoom();
@@ -215,7 +221,12 @@ namespace FlapJack
 
         private void OpenGameRoom()
         {
+            gameRoomOpened = true;
             GameRoom gameMatch = new GameRoom();
+
+            gameMatch.FormClosed += (obj, ev) =>
+            { gameRoomOpened = false; };
+
             gameMatch.ShowDialog(this);
         }
 
@@ -255,6 +266,11 @@ namespace FlapJack
                 //    gameMatch.ShowDialog(this);
                 //}
             }
+        }
+
+        private void eBtnJoin_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
