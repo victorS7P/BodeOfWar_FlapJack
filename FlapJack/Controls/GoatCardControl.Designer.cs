@@ -50,6 +50,7 @@
             // 
             // lblGoats
             // 
+            this.lblGoats.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblGoats.AutoSize = true;
             this.lblGoats.BackColor = System.Drawing.Color.Black;
             this.lblGoats.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

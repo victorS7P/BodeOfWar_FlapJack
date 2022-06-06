@@ -32,8 +32,8 @@
             this.lblPlayers = new System.Windows.Forms.Label();
             this.pnlCards = new System.Windows.Forms.Panel();
             this.tmrSelect = new System.Windows.Forms.Timer(this.components);
-            this.plsRoom = new FlapJack.PlayersList();
             this.gbxCards = new System.Windows.Forms.GroupBox();
+            this.plsRoom = new FlapJack.PlayersList();
             this.gbxCards.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,7 +54,7 @@
             this.pnlCards.AutoScroll = true;
             this.pnlCards.Location = new System.Drawing.Point(9, 19);
             this.pnlCards.Name = "pnlCards";
-            this.pnlCards.Size = new System.Drawing.Size(1070, 299);
+            this.pnlCards.Size = new System.Drawing.Size(1145, 406);
             this.pnlCards.TabIndex = 0;
             // 
             // tmrSelect
@@ -62,15 +62,6 @@
             this.tmrSelect.Enabled = true;
             this.tmrSelect.Interval = 2000;
             this.tmrSelect.Tick += new System.EventHandler(this.tmrSelect_Tick);
-            // 
-            // plsRoom
-            // 
-            this.plsRoom.BackColor = System.Drawing.Color.DarkRed;
-            this.plsRoom.Location = new System.Drawing.Point(12, 25);
-            this.plsRoom.Name = "plsRoom";
-            this.plsRoom.Players = null;
-            this.plsRoom.Size = new System.Drawing.Size(172, 260);
-            this.plsRoom.TabIndex = 7;
             // 
             // gbxCards
             // 
@@ -82,10 +73,19 @@
             this.gbxCards.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.gbxCards.Location = new System.Drawing.Point(12, 307);
             this.gbxCards.Name = "gbxCards";
-            this.gbxCards.Size = new System.Drawing.Size(1085, 324);
+            this.gbxCards.Size = new System.Drawing.Size(1160, 431);
             this.gbxCards.TabIndex = 11;
             this.gbxCards.TabStop = false;
             this.gbxCards.Text = "Cartas na mão";
+            // 
+            // plsRoom
+            // 
+            this.plsRoom.BackColor = System.Drawing.Color.DarkRed;
+            this.plsRoom.Location = new System.Drawing.Point(12, 25);
+            this.plsRoom.Name = "plsRoom";
+            this.plsRoom.Players = null;
+            this.plsRoom.Size = new System.Drawing.Size(172, 260);
+            this.plsRoom.TabIndex = 7;
             // 
             // GameRoom
             // 
@@ -93,12 +93,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::FlapJack.Properties.Resources.bg;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(1109, 643);
+            this.ClientSize = new System.Drawing.Size(1184, 750);
             this.Controls.Add(this.gbxCards);
             this.Controls.Add(this.plsRoom);
             this.Controls.Add(this.lblPlayers);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "GameRoom";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Match";
             this.Load += new System.EventHandler(this.GameMatch_Load);
             this.gbxCards.ResumeLayout(false);
