@@ -90,12 +90,16 @@ namespace FlapJack
             UpdateAllMatches();
             dgvMatches.ClearSelection();
 
-            foreach (DataGridViewRow row in dgvMatches.Rows)
+
+            if (createdMatch != null)
             {
-                Match m = (Match)row.DataBoundItem;
-                if (m.id == createdMatch.id)
+                foreach (DataGridViewRow row in dgvMatches.Rows)
                 {
-                    row.Selected = true;
+                    Match m = (Match)row.DataBoundItem;
+                    if (m.id == createdMatch.id)
+                    {
+                        row.Selected = true;
+                    }
                 }
             }
 
@@ -179,7 +183,6 @@ namespace FlapJack
                         Server.MatchHasStarted(SelectedMatch) &&
                         User.GetInstance().id != null &&
                         !gameRoomOpened
-
                        )
                     {
                         CurrentMatch.SetCurrentMatch(SelectedMatch, User.GetInstance());
@@ -224,8 +227,13 @@ namespace FlapJack
             gameRoomOpened = true;
             GameRoom gameMatch = new GameRoom();
 
-            gameMatch.FormClosed += (obj, ev) =>
-            { gameRoomOpened = false; };
+            gameMatch.FormClosing += (obj, ev) =>
+            {
+                Bot.GetInstance().Reset();
+                CurrentMatch.GetInstance().Reset();
+                User.GetInstance().Reset();
+                gameRoomOpened = false;
+            };
 
             gameMatch.ShowDialog(this);
         }
@@ -255,16 +263,6 @@ namespace FlapJack
             {
                 Server.StartMatch(SelectedMatch);
                 OpenGameRoom();
-
-                //if (pltHall.Players.Count == 1)
-                //{
-                //    eBtnJoin.Error = "Você não pode começar uma partida sozinho";
-                //} else
-                //{
-                //    Server.StartMatch(SelectedMatch);
-                //    GameRoom gameMatch = new GameRoom();
-                //    gameMatch.ShowDialog(this);
-                //}
             }
         }
 

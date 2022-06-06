@@ -88,7 +88,12 @@ namespace FlapJack
 
         public static bool MatchHasStarted(Match match)
         {
-            return Jogo.ExibirNarracao(int.Parse(match.id)).Contains("iniciou a partida");
+            string narracao = Jogo.ExibirNarracao(int.Parse(match.id));
+
+            return (
+                narracao.Contains("iniciou a partida") &&
+                !narracao.Contains("BODE OF WAR")
+            );
         }
 
         public static void StartMatch(Match match)
@@ -118,7 +123,14 @@ namespace FlapJack
 
         public static string[] GetPlayerGoatCards(User user)
         {
-            return GetStrData(Jogo.VerificarMao(int.Parse(user.id), user.password));
+            try
+            {
+                return GetStrData(Jogo.VerificarMao(int.Parse(user.id), user.password));
+            } catch
+            {
+                return new string[0];
+            }
+           
         }
 
         public static RoundModel GetMatchRound()

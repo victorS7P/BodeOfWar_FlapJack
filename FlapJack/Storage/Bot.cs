@@ -23,13 +23,8 @@ namespace FlapJack
 
         public void Reset()
         {
-            HandSortedByValue = new List<CardModel>();
-            TableCards = new List<int>();
-
-            Goats = 0;
-            IslandTotal = 0;
-            CurrentRoundNumber = 0;
-    }
+            _instance = null;
+        }
 
         public void UpdateTable(List<int> NewTableCards)
         {

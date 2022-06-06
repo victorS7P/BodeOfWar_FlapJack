@@ -19,8 +19,7 @@ namespace FlapJack
 
         public void Reset()
         {
-            currentRound = null;
-            currentPlayer = new Player();
+            _instance = null;
         }
 
         public static void SetCurrentMatch(Match match, Player currentPlayer)

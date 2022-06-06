@@ -113,6 +113,7 @@ namespace FlapJack
                 UserShouldAwaitForIslandCard();
             } else if (CurrentRound.roundStatus == 'E')
             {
+                UpdateCardsPanel(true, false);
                 CompleteMatch();
             }
         }
@@ -159,9 +160,12 @@ namespace FlapJack
 
         private void CompleteMatch()
         {
+            tmrSelect.Enabled = false;
+
             string text = Server.GetWinnerText();
             MessageBox.Show(this, text, "Partida encerrada!");
 
+            Owner.Show();
             this.Close();
         }
 

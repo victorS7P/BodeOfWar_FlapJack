@@ -18,9 +18,7 @@ namespace FlapJack
 
         public void Reset()
         {
-            id = string.Empty;
-            name = string.Empty;
-            password = string.Empty;
+            _instance = null;
         }
 
         public static void SetUser(string serverUser, Player player)
